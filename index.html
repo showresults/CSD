@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coupled Score Distillation: Unlocking Geometrically Consistent Text-to-3D Generation with Multi-View Constraints and Gaussian Splatting</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f8f8f8;
+        }
+        
+        h1, h2, h3 {
+            color: #2c3e50;
+            margin-top: 30px;
+        }
+        
+        h1 {
+            text-align: center;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #eee;
+        }
+        
+        .abstract {
+            font-style: italic;
+            background-color: #f5f5f5;
+            padding: 20px;
+            border-radius: 5px;
+            margin: 30px 0;
+        }
+        
+        .results-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 14px;
+        }
+        
+        .results-table th {
+            background-color: #f2f2f2;
+            padding: 12px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+        
+        .results-table td {
+            padding: 10px;
+            border: 1px solid #ddd;
+        }
+        
+        .video-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            margin: 40px 0;
+        }
+        
+        .video-pair {
+            width: 30%;
+            margin-bottom: 30px;
+        }
+        
+        .video-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5px;
+        }
+        
+        .video-prompt {
+            grid-column: span 2;
+            text-align: center;
+            font-size: 0.9em;
+            margin-top: 5px;
+            color: #555;
+            min-height: 40px;
+        }
+        
+        video {
+            width: 100%;
+            height: auto;
+            border-radius: 4px;
+        }
+        
+        .qualitative-table {
+            width: 100%;
+            overflow-x: auto;
+            margin: 40px 0;
+            border-collapse: collapse;
+        }
+        
+        .qualitative-table th, .qualitative-table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+            vertical-align: middle;
+        }
+        
+        .qualitative-table th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+        
+        .qualitative-table th:first-child {
+            width: 140px;
+        }
+        
+        footer {
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+            text-align: center;
+            font-size: 0.9em;
+            color: #777;
+        }
+
+        @media (max-width: 900px) {
+            .video-pair {
+                width: 45%;
+            }
+        }
+        
+        @media (max-width: 600px) {
+            .video-pair {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Coupled Score Distillation: Unlocking Geometrically Consistent Text-to-3D Generation with Multi-View Constraints and Gaussian Splatting</h1>
+    
+    <h2>Quantitative Results</h2>
+
+    <p>Placeholder</p>
+    
+    <table class="results-table">
+        <tr>
+            <th>Method</th>
+            <th>JR(%)</th>
+            <th>CS(%)</th>
+        </tr>
+        <tr><td>DreamFusion-IF*</td><td>36.67</td><td>26.36</td></tr>
+        <tr><td>Magic3D*</td><td>53.33</td><td>26.59</td></tr>
+        <tr><td>ProlificDreamer*</td><td>56.67</td><td>26.69</td></tr>
+        <tr><td>Zero-1-to-3</td><td>16.67</td><td>21.25</td></tr>
+        <tr><td>MVDream*</td><td>10</td><td>26.17</td></tr>
+        <tr><td>DreamControl*</td><td>10</td><td>28.14</td></tr>
+        <tr><td>SDI</td><td>53.33</td><td>28.14</td></tr>
+        <tr><td>GS-SDS</td><td>56.67</td><td>29.23</td></tr>
+        <tr><td>DreamGaussian-sds</td><td>66.66</td><td>22.33</td></tr>
+        <tr><td>DreamGaussian-mvdream</td><td>10</td><td>22.17</td></tr>
+        <tr><td>GaussianDreamer</td><td>33.33</td><td>29.23</td></tr>
+        <tr><td>GSGEN</td><td>76.67</td><td>28.31</td></tr>
+        <tr><td>LucidDreamer</td><td>40</td><td>27.89</td></tr>
+        <tr><td>SyncDreamer</td><td>33.33</td><td>29.75</td></tr>
+        <tr><td>LGM</td><td>23.33</td><td>29.42</td></tr>
+        <tr><td>CSD-3D-GS (Ours)</td><td>3.33</td><td>28.98</td></tr>
+        <tr><td>CSD-Mesh (Ours)</td><td>3.33</td><td>30.23</td></tr>
+    </table>
+    
+    <h2>Quantitative Experimental Results Display</h2>
+    
+    <div id="quantitative-results" class="video-grid">
+        <!-- Videos will be inserted here by JavaScript -->
+    </div>
+    
+    <h2>Qualitative Results Showcase</h2>
+
+    <p>Placeholder</p>
+    
+    <div class="qualitative-container">
+        <table id="qualitative-table" class="qualitative-table">
+            <!-- Table will be populated by JavaScript -->
+        </table>
+    </div>
+
+    <script>
+        // Data for quantitative videos
+        const textPrompts = {
+            "image1_chimpanzee": "A chimpanzee dressed like Henry VIII king of England.",
+            "image2_white_astronaut": "A white astronaut is riding a brown horse.",
+            "image3_statue_dog": "Michelangelo style statue of dog reading news on a cellphone.",
+            "image4_blue_jay": "A blue jay standing on a large basket of rainbow macarons.",
+            "image5_bunny": "A baby bunny sitting on top of a stack of pancakes.",
+            "image6_statue_angel": "A statue of angel.",
+            "image7_Batman": "Batman is riding a moto.",
+            "image8_Elon_musk": "Elon musk, using a laptop.",
+            "image9_Messi": "Lionel Messi in a suit, holding the Ballon d'Or.",
+            "image10_Tower_Bridge": "A wide angle zoomed out DSLR photo of Tower Bridge made out of gingerbread and candy.",
+            "image11_sand_castle": "A highly detailed sand castle.",
+            "image12_Tudor_house": "A model of a house in Tudor style.",
+            "image13_garden": "A pavilion in a Chinese garden.",
+            "image14_Woody": "Woody from Toy Story.",
+            "image15_Captain_America": "A standing Captain America, Marvel character.",
+            "image16_Spider_Man": "Spider Man.",
+            "image17_gundam": "A gundam.",
+            "image18_a_wizard": "A wizard.",
+            "image19_astronaut": "astronaut.",
+            "image20_Packard": "a classic Packard car.",
+            "image21_vase": "a vase with pink flowers.",
+            "image22_cookies": "A plate piled high with chocolate chip cookies.",
+            "image23_chicken_waffles": "A plate of fried chicken and waffles with maple syrup on them.",
+            "image24_corgi": "a corgi.",
+            "image25_simba": "simba, the lion cub from The Lion King.",
+            "image26_dragon_cat": "a dragon-cat hybrid.",
+            "image27_peacock": "a peacock.",
+            "image28_elephant": "an elephant.",
+            "image29_teddy_bear": "a teddy bear.",
+            "image30_Tesla": "a Tesla Model3 sedan."
+        };
+
+        // Populate quantitative results section
+        const quantitativeContainer = document.getElementById('quantitative-results');
+        
+        // List of all video names (without file extension)
+        const videoNames = [
+            "image1_chimpanzee", "image2_white_astronaut", "image3_statue_dog", 
+            "image4_blue_jay", "image5_bunny", "image6_statue_angel", 
+            "image7_Batman", "image8_Elon_musk", "image9_Messi", 
+            "image10_Tower_Bridge", "image11_sand_castle", "image12_Tudor_house", 
+            "image13_garden", "image14_Woody", "image15_Captain_America", 
+            "image16_Spider_Man", "image17_gundam", "image18_a_wizard", 
+            "image19_astronaut", "image20_Packard", "image21_vase", 
+            "image22_cookies", "image23_chicken_waffles", "image24_corgi", 
+            "image25_simba", "image26_dragon_cat", "image27_peacock", 
+            "image28_elephant", "image29_teddy_bear", "image30_Tesla"
+        ];
+
+        function createVideo(src, muted = true) {
+            const video = document.createElement('video');
+            video.src = src;
+            video.muted = muted;
+            video.autoplay = true;
+            video.loop = true;
+            video.controls = false;
+            video.addEventListener('mouseenter', function() {
+                this.controls = true;
+            });
+            video.addEventListener('mouseleave', function() {
+                this.controls = false;
+            });
+            return video;
+        }
+        
+        // Generate video pairs
+        videoNames.forEach(videoName => {
+            const videoPair = document.createElement('div');
+            videoPair.className = 'video-pair';
+            
+            // Create container for the two videos
+            const videoContainer = document.createElement('div');
+            videoContainer.className = 'video-container';
+            
+            // Texture video
+            const textureVideo = createVideo(`quantitative/CSD_DMTET_texture_videos/${videoName}.mp4`);
+            
+            // Mesh video
+            const meshVideo = createVideo(`quantitative/CSD_DMTET_mesh_videos/${videoName}.mp4`, true);
+            
+            // Video prompt
+            const videoPrompt = document.createElement('div');
+            videoPrompt.className = 'video-prompt';
+            videoPrompt.textContent = textPrompts[videoName];
+            
+            // Add elements to container
+            videoContainer.appendChild(textureVideo);
+            videoContainer.appendChild(meshVideo);
+            videoPair.appendChild(videoContainer);
+            videoPair.appendChild(videoPrompt);
+            
+            // Add to main container
+            quantitativeContainer.appendChild(videoPair);
+        });
+        
+        // Data for qualitative comparison
+        const qualitativePrompts = {
+            "image5_bunny": "A baby bunny sitting on top of a stack of pancakes.",
+            "image14_Woody": "Woody from Toy Story.",
+            "image17_gundam": "A gundam.",
+            "image25_simba": "simba, the lion cub from The Lion King.",
+            "image30_Tesla": "a Tesla Model3 sedan."
+        };
+        
+        const methods = [
+            "SDI", 
+            "GS-SDS", 
+            "DreamGaussian-SDS", 
+            "DreamGaussian-MVDream", 
+            "GaussianDreamer", 
+            "GSGEN", 
+            "LucidDreamer", 
+            "SyncDreamer", 
+            "LGM", 
+            "CSD-3D-GS (Ours)", 
+            "CSD-Mesh (Ours)"
+        ];
+        // Map method names to folder names
+        const methodToFolder = {
+            "SDI": "1-SDI",
+            "GS-SDS": "2-GS-SDS",
+            "DreamGaussian-SDS": "3-DreamGaussian-SDS",
+            "DreamGaussian-MVDream": "4-DreamGaussian-MVDream",
+            "GaussianDreamer": "5-GaussianDreamer",
+            "GSGEN": "6-GSGEN",
+            "LucidDreamer": "7-LucidDreamer",
+            "SyncDreamer": "8-SyncDreamer",
+            "LGM": "9-LGM",
+        };
+        
+        // Extract just the image names for column headers
+        const promptNames = Object.keys(qualitativePrompts);
+        
+        // Generate qualitative results table
+        const qualitativeTable = document.getElementById('qualitative-table');
+        
+        // Create header row
+        const headerRow = document.createElement('tr');
+        
+        // First cell (empty corner)
+        const cornerCell = document.createElement('th');
+        headerRow.appendChild(cornerCell);
+        
+        // Add column headers (prompt names)
+        promptNames.forEach(name => {
+            const th = document.createElement('th');
+            th.textContent = qualitativePrompts[name];
+            headerRow.appendChild(th);
+        });
+        
+        qualitativeTable.appendChild(headerRow);
+        
+        // Create data rows
+        methods.forEach(method => {
+            const row = document.createElement('tr');
+            
+            // Add method name as first cell
+            const methodCell = document.createElement('td');
+            methodCell.textContent = method;
+            row.appendChild(methodCell);
+            
+            // Add video cells
+            promptNames.forEach(promptName => {
+                const cell = document.createElement('td');
+                 
+                // Extract method folder name (remove "(Ours)" part if exists)
+                let folderName = method;
+                if (method.includes("(Ours)")) {
+                    if (method.includes("CSD-3D-GS")) {
+                        folderName = "10-CSD-GS";
+                    } else if (method.includes("CSD-Mesh")) {
+                        folderName = "11-CSD-mesh";
+                    }
+                } else {
+                    folderName = methodToFolder[method];
+                }
+                
+                const video = createVideo(`qualitative/${folderName}/${promptName}.mp4`, true);
+                
+                cell.appendChild(video);
+                row.appendChild(cell);
+            });
+            
+            qualitativeTable.appendChild(row);
+        });
+
+        if (window.location.href.includes("127.0.0.1")) {
+            console.log("Checking video loading status:");
+
+            // Create a test function
+            function testVideoLoading(videoPath) {
+                const testVideo = document.createElement('video');
+                testVideo.style.display = 'none';
+                document.body.appendChild(testVideo);
+                
+                testVideo.onloadeddata = function() {
+                    console.log(`✅ Successfully loaded: ${videoPath}`);
+                    this.remove();
+                };
+                
+                testVideo.onerror = function() {
+                    console.error(`❌ Loading failed: ${videoPath}`, this.error);
+                    this.remove();
+                };
+                
+                testVideo.src = videoPath;
+            }
+
+            // Test some video paths
+            videoNames.forEach(name => {
+                testVideoLoading(`quantitative/CSD_DMTET_texture_videos/${name}.mp4`);
+                testVideoLoading(`quantitative/CSD_DMTET_mesh_videos/${name}.mp4`);
+            });
+
+            // Test some qualitative videos
+            methods.forEach((method, i) => {
+                if (i < 3) { // Only test the first few methods to reduce log volume
+                    promptNames.forEach(promptName => {
+                        const folderName = method.includes("(Ours)") ? 
+                            (method.includes("CSD-3D-GS") ? "10-CSD-GS" : "11-CSD-mesh") :
+                            methodToFolder[method];
+                        
+                        testVideoLoading(`qualitative/${folderName}/${promptName}.mp4`);
+                    });
+                }
+            });
+        }
+
+    </script>
+</body>
+</html>

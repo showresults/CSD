@@ -1,0 +1,30 @@
+image1_chimpanzee.mp4: A chimpanzee dressed like Henry VIII king of England.
+image2_white_astronaut.mp4: A white astronaut is riding a brown horse.
+image3_statue_dog.mp4: Michelangelo style statue of dog reading news on a cellphone.
+image4_blue_jay.mp4: A blue jay standing on a large basket of rainbow macarons.
+image5_bunny.mp4: A baby bunny sitting on top of a stack of pancakes.
+image6_statue_angel.mp4: A statue of angel.
+image7_Batman.mp4: Batman is riding a moto.
+image8_Elon_musk.mp4: Elon musk, using a laptop.
+image9_Messi.mp4: Lionel Messi in a suit, holding the Ballon d'Or.
+image10_Tower_Bridge.mp4: A wide angle zoomed out DSLR photo of Tower Bridge made out of gingerbread and candy.
+image11_sand_castle.mp4: A highly detailed sand castle.
+image12_Tudor_house.mp4: A model of a house in Tudor style.
+image13_garden.mp4: A pavilion in a Chinese garden.
+image14_Woody.mp4: Woody from Toy Story.
+image15_Captain_America.mp4:  A standing Captain America, Marvel character.
+image16_Spider_Man.mp4: Spider Man.
+image17_gundam.mp4: A gundam.
+image18_a_wizard.mp4: A wizard.
+image19_astronaut.mp4: astronaut.
+image20_Packard.mp4: a classic Packard car.	
+image21_vase.mp4: a vase with pink flowers.
+image22_cookies.mp4: A plate piled high with chocolate chip cookies.
+image23_chicken_waffles.mp4: A plate of fried chicken and waffles with maple syrup on them.
+image24_corgi.mp4: a corgi.
+image25_simba.mp4: simba, the lion cub from The Lion King.
+image26_dragon_cat.mp4: a dragon-cat hybrid.
+image27_peacock.mp4: a peacock.
+image28_elephant.mp4: an elephant.
+image29_teddy_bear.mp4: a teddy bear.
+image30_Tesla.mp4: a Tesla Model3 sedan.
