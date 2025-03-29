@@ -4,7 +4,7 @@
 
 Based on the quantitative experiments supplemented by DreamControl [1], we evaluated geometry and text consistency using the occurrence rate of the Janus problem (JR) and CLIP-Score (CS) [2] on 30 text prompts, respectively.
 
-[1] DreamControl: Control-based text-to-3D generation with 3D self-prior. CVPR, 2024.
+[1] DreamControl: Control-based text-to-3D generation with 3D self-prior. CVPR, 2024.  
 [2] CLIPScore: A reference-free evaluation metric for image captioning. arXiv:2104.08718, 2021.
 
 | Method                | JR(%)↓ | CS(%)↑ |
