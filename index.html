@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Coupled Score Distillation: Unlocking Geometrically Consistent Text-to-3D Generation with Multi-View Constraints and Gaussian Splatting</title>
+    <title>Video Display of Coupled Score Distillation Generation Results</title>
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -133,41 +133,7 @@
     </style>
 </head>
 <body>
-    <h1>Coupled Score Distillation: Unlocking Geometrically Consistent Text-to-3D Generation with Multi-View Constraints and Gaussian Splatting</h1>
-    
-    <h2>Quantitative Results</h2>
-
-    <p>Based on the quantitative experiments supplemented by DreamControl [1], we evaluated geometry and text consistency using the occurrence rate of the Janus problem (JR) and CLIP-Score (CS) [2] on 30 text prompts, respectively.</p>
-    <p>
-        [1] DreamControl: Control-based text-to-3D generation with 3D self-prior. CVPR, 2024.
-        <br>
-        [2] CLIPScore: A reference-free evaluation metric for image captioning. arXiv:2104.08718, 2021.
-    </p>
-    
-    <table class="results-table">
-        <tr>
-            <th>Method</th>
-            <th>JR(%)↓</th>
-            <th>CS(%)↑</th>
-        </tr>
-        <tr><td>DreamFusion-IF*</td><td>36.67</td><td>26.36</td></tr>
-        <tr><td>Magic3D*</td><td>53.33</td><td>26.59</td></tr>
-        <tr><td>ProlificDreamer*</td><td>56.67</td><td>26.69</td></tr>
-        <tr><td>Zero-1-to-3</td><td>16.67</td><td>21.25</td></tr>
-        <tr><td>MVDream*</td><td>10</td><td>26.17</td></tr>
-        <tr><td>DreamControl*</td><td>10</td><td>28.14</td></tr>
-        <tr><td>SDI</td><td>53.33</td><td>28.14</td></tr>
-        <tr><td>GS-SDS</td><td>56.67</td><td>29.23</td></tr>
-        <tr><td>DreamGaussian-sds</td><td>66.66</td><td>22.33</td></tr>
-        <tr><td>DreamGaussian-mvdream</td><td>10</td><td>22.17</td></tr>
-        <tr><td>GaussianDreamer</td><td>26.67</td><td>29.23</td></tr>
-        <tr><td>GSGEN</td><td>76.67</td><td>28.31</td></tr>
-        <tr><td>LucidDreamer</td><td>33.33</td><td>27.89</td></tr>
-        <tr><td>SyncDreamer</td><td>33.33</td><td>29.75</td></tr>
-        <tr><td>LGM</td><td>23.33</td><td>29.42</td></tr>
-        <tr><td>CSD-3D-GS (Ours)</td><td>3.33</td><td>28.98</td></tr>
-        <tr style="font-weight: bold;"><td>CSD-Mesh (Ours)</td><td>3.33</td><td>30.23</td></tr>
-    </table>
+    <h1>Video Display of Coupled Score Distillation Generation Results</h1>
     
     <h2>Quantitative Experimental Results Display</h2>
 
@@ -177,44 +143,6 @@
         <!-- Videos will be inserted here by JavaScript -->
     </div>
     
-    <h2>Qualitative Results Showcase</h2>
-
-    <p>Video of additional qualitative comparison results.</p>
-    
-    <div class="qualitative-container">
-        <table id="qualitative-table" class="qualitative-table">
-            <!-- Table will be populated by JavaScript -->
-        </table>
-    </div>
-
-    <h2>Impact of &lambda; in the proposed CSD</h2>
-
-    <p>Four orthogonal perspective images.</p>
-    <p style="font-style: italic;">Text prompts: A DSLR photo of a Spiderman dancing, Marvel character, highly detailed 3D model.</p>
-
-    <table id="lambda-table" class="lambda-table">
-        <tr>
-            <th style="width: 5em;">&lambda;</th>
-            <th>Image</th>
-        </tr>
-        <tr>
-            <td style="text-align: center;">0.1</td>
-            <td><img style="height: 15em;" src="lambda/0.1.png" alt="Image 1"></td>
-        </tr>
-        <tr>
-            <td style="text-align: center;">0.5</td>
-            <td><img style="height: 15em;" src="lambda/0.5.png" alt="Image 2"></td>
-        </tr>
-        <tr>
-            <td style="text-align: center;">1.0</td>
-            <td><img style="height: 15em;" src="lambda/1.0.png" alt="Image 3"></td>
-        </tr>
-        <tr>
-            <td style="text-align: center;">2.0</td>
-            <td><img style="height: 15em;" src="lambda/2.0.png" alt="Image 4"></td>
-        </tr>
-    </table>
-
     <script>
         // Data for quantitative videos
         const textPrompts = {
